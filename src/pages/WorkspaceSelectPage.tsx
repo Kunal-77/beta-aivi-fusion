@@ -5,7 +5,7 @@ import { useAuth, useUser, useOrganizationList, useClerk } from "@clerk/react";
 import { useRouter, useSearchParams } from "@/compat/navigation";
 import Link from "@/compat/link";
 import { Briefcase, User, ArrowRight, Plus } from "lucide-react";
-import { Button, SkeletonMetricsRow, ThemeToggle } from "@/components/ui";
+import { Button, SkeletonMetricsRow } from "@/components/ui";
 
 function WorkspaceSelectContent() {
   const { isLoaded: authLoaded, isSignedIn } = useAuth();
@@ -109,7 +109,6 @@ function WorkspaceSelectContent() {
           <div className="hidden sm:block text-xs text-muted-foreground font-mono">
             Logged in as: <span className="text-foreground font-semibold">{user?.primaryEmailAddress?.emailAddress}</span>
           </div>
-          <ThemeToggle />
         </div>
       </header>
 

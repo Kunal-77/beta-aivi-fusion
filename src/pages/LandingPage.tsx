@@ -28,7 +28,7 @@ import {
   Settings,
   LogOut,
 } from "lucide-react";
-import { Button, ThemeToggle, LazyViewport, ScrollAnimate } from "@/components/ui";
+import { Button, LazyViewport, ScrollAnimate } from "@/components/ui";
 import { HeroVisual } from "@/components/site/HeroVisual";
 
 
@@ -415,7 +415,6 @@ export default function LandingPage() {
                 </Link>
               </>
             )}
-            <ThemeToggle />
           </div>
         </div>
       </header>

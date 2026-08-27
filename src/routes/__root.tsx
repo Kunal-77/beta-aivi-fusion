@@ -166,7 +166,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <ClerkRouterBridge>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" enableSystem={false}>
           <WorkspaceTransitionProvider>
             {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
             <Outlet />
