@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, use, Suspense, useRef } from "react";
+import { useState, useEffect, Suspense, useRef } from "react";
 import { useAuth, useOrganization } from "@clerk/react";
 import Link from "@/compat/link";
 import { useRouter } from "@/compat/navigation";
@@ -32,7 +32,7 @@ import {
 import { ShieldCheck, Target, Calendar, Users, FileText, Sparkles, ArrowLeft, DollarSign } from "lucide-react";
 
 interface PageProps {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }
 
 export default function InitiativeDetailPage(props: PageProps) {
@@ -44,7 +44,7 @@ export default function InitiativeDetailPage(props: PageProps) {
 }
 
 function InitiativeDetailContent({ params }: PageProps) {
-  const resolvedParams = use(params);
+  const resolvedParams = params;
   const initiativeId = resolvedParams.id;
 
   const { getToken, orgId } = useAuth();
