@@ -43,6 +43,47 @@
   --color-teal: var(--teal);
   --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /*
+   * Brand retint: the ported AIVI screens use blue/indigo utility ramps.
+   * Remapping those ramps onto the teal/ember brand keeps every legacy screen
+   * on the new design language without touching component logic.
+   */
+  --color-blue-50: oklch(0.97 0.02 190);
+  --color-blue-100: oklch(0.94 0.04 190);
+  --color-blue-200: oklch(0.9 0.06 190);
+  --color-blue-300: oklch(0.86 0.09 190);
+  --color-blue-400: oklch(0.82 0.11 190);
+  --color-blue-500: oklch(0.78 0.13 190);
+  --color-blue-600: oklch(0.7 0.12 190);
+  --color-blue-700: oklch(0.58 0.1 192);
+  --color-blue-800: oklch(0.42 0.075 195);
+  --color-blue-900: oklch(0.3 0.05 200);
+  --color-blue-950: oklch(0.22 0.035 210);
+
+  --color-indigo-50: oklch(0.97 0.02 190);
+  --color-indigo-100: oklch(0.94 0.04 190);
+  --color-indigo-200: oklch(0.9 0.06 192);
+  --color-indigo-300: oklch(0.86 0.09 194);
+  --color-indigo-400: oklch(0.81 0.11 196);
+  --color-indigo-500: oklch(0.75 0.12 198);
+  --color-indigo-600: oklch(0.66 0.11 200);
+  --color-indigo-700: oklch(0.54 0.09 202);
+  --color-indigo-800: oklch(0.4 0.07 208);
+  --color-indigo-900: oklch(0.29 0.05 215);
+  --color-indigo-950: oklch(0.21 0.035 220);
+
+  --color-sky-400: oklch(0.84 0.1 200);
+  --color-sky-500: oklch(0.79 0.12 200);
+  --color-sky-600: oklch(0.7 0.11 200);
+
+  --color-violet-400: oklch(0.8 0.13 60);
+  --color-violet-500: oklch(0.74 0.15 52);
+  --color-violet-600: oklch(0.68 0.16 48);
+  --color-purple-400: oklch(0.8 0.13 60);
+  --color-purple-500: oklch(0.74 0.15 52);
+  --color-purple-600: oklch(0.68 0.16 48);
+
 }
 
 :root {
