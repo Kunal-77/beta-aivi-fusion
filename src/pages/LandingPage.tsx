@@ -29,6 +29,8 @@ import {
   LogOut,
 } from "lucide-react";
 import { Button, ThemeToggle, LazyViewport, ScrollAnimate } from "@/components/ui";
+import { HeroVisual } from "@/components/site/HeroVisual";
+
 
 const SectionPlaceholder = ({ height }: { height: string }) => (
   <div style={{ height }} className="w-full rounded-2xl border border-border/40 bg-card/20 animate-pulse backdrop-blur-xs flex items-center justify-center">
