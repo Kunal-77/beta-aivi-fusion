@@ -29,6 +29,8 @@ import {
   LogOut,
 } from "lucide-react";
 import { Button, ThemeToggle, LazyViewport, ScrollAnimate } from "@/components/ui";
+import { HeroVisual } from "@/components/site/HeroVisual";
+
 
 const SectionPlaceholder = ({ height }: { height: string }) => (
   <div style={{ height }} className="w-full rounded-2xl border border-border/40 bg-card/20 animate-pulse backdrop-blur-xs flex items-center justify-center">
@@ -419,54 +421,69 @@ export default function LandingPage() {
       </header>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 max-w-7xl mx-auto text-center space-y-8 relative z-10">
-        <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] font-semibold text-blue-600 dark:text-blue-400 tracking-wide hero-entrance-badge">
-          <Sparkles className="w-3.5 h-3.5 text-cyan-500 dark:text-cyan-400" /> Built for enterprise AI governance teams
+      <section className="relative z-10 px-6 pt-32 pb-20">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{ background: "var(--gradient-hero)" }}
+        />
+        <div className="grid-bg pointer-events-none absolute inset-0 opacity-60" />
+
+        <div className="relative mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-2">
+          <div className="text-left">
+            <div className="flex items-center gap-3 hero-entrance-badge">
+              <span className="h-px w-12 bg-primary/60" />
+              <span className="eyebrow">Enterprise AI value intelligence</span>
+            </div>
+
+            <h1 className="mt-8 max-w-xl font-display text-5xl leading-[1.05] font-semibold tracking-tight lg:text-[4.2rem] hero-entrance-title">
+              Transform AI Investments Into Measurable Business Value
+            </h1>
+
+            <p className="mt-7 max-w-lg text-base leading-relaxed text-muted-foreground hero-entrance-desc">
+              The world's first unified public decision intelligence system. Model ROIs, review governance gates, monitor multi-provider models, and manage personal productivity.
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center gap-3.5 hero-entrance-ctas">
+              {isSignedIn ? (
+                <>
+                  <Button
+                    variant="primary"
+                    onClick={handleBusinessWorkspaceClick}
+                    disabled={loadingBusiness}
+                    className="px-5 py-2.5 text-xs font-bold shadow-lg shadow-blue-500/20 active:scale-[0.98] transition-all cta-button-hover"
+                  >
+                    {loadingBusiness ? "Loading..." : "Business Workspace"} <ArrowRight className="w-3.5 h-3.5" />
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    onClick={handlePersonalWorkspaceClick}
+                    className="px-5 py-2.5 text-xs font-bold active:scale-[0.98] transition-all cta-button-hover"
+                  >
+                    Personal Workspace <ArrowRight className="w-3.5 h-3.5" />
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Link href="/sign-up">
+                    <Button variant="primary" className="px-5 py-2.5 text-xs font-bold shadow-lg shadow-blue-500/20 active:scale-[0.98] transition-all cta-button-hover">
+                      Get Started
+                    </Button>
+                  </Link>
+                  <a href="#tour">
+                    <Button variant="secondary" className="px-5 py-2.5 text-xs font-bold active:scale-[0.98] transition-all cta-button-hover">
+                      Explore Guided Tour
+                    </Button>
+                  </a>
+                </>
+              )}
+            </div>
+          </div>
+
+          <HeroVisual />
         </div>
- 
-        <div className="space-y-4 max-w-4xl mx-auto">
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.1] text-transparent bg-clip-text bg-gradient-to-b from-foreground to-muted-foreground hero-entrance-title">
-            Transform AI Investments Into Measurable Business Value
-          </h1>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed hero-entrance-desc">
-            The world's first unified public decision intelligence system. Model ROIs, review governance gates, monitor multi-provider models, and manage personal productivity.
-          </p>
-        </div>
- 
-        <div className="flex items-center justify-center gap-3.5 hero-entrance-ctas">
-          {isSignedIn ? (
-            <>
-              <Button
-                variant="primary"
-                onClick={handleBusinessWorkspaceClick}
-                disabled={loadingBusiness}
-                className="px-5 py-2.5 text-xs font-bold shadow-lg shadow-blue-500/20 active:scale-[0.98] transition-all cta-button-hover"
-              >
-                {loadingBusiness ? "Loading..." : "Business Workspace"} <ArrowRight className="w-3.5 h-3.5" />
-              </Button>
-              <Button
-                variant="secondary"
-                onClick={handlePersonalWorkspaceClick}
-                className="px-5 py-2.5 text-xs font-bold active:scale-[0.98] transition-all cta-button-hover"
-              >
-                Personal Workspace <ArrowRight className="w-3.5 h-3.5" />
-              </Button>
-            </>
-          ) : (
-            <>
-              <Link href="/sign-up">
-                <Button variant="primary" className="px-5 py-2.5 text-xs font-bold shadow-lg shadow-blue-500/20 active:scale-[0.98] transition-all cta-button-hover">
-                  Get Started
-                </Button>
-              </Link>
-              <a href="#tour">
-                <Button variant="secondary" className="px-5 py-2.5 text-xs font-bold active:scale-[0.98] transition-all cta-button-hover">
-                  Explore Guided Tour
-                </Button>
-              </a>
-            </>
-          )}
-        </div>
+
+        <div className="relative mx-auto mt-20 max-w-7xl text-center space-y-8">
+
  
         {/* Dashboard Preview Frame */}
         <div className="pt-12 max-w-5xl mx-auto relative group hero-scroll-wrapper">
@@ -546,7 +563,9 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
+        </div>
       </section>
+
 
       {/* Business Problems Section */}
       <LazyViewport placeholder={<SectionPlaceholder height="350px" />} minHeight="350px">
