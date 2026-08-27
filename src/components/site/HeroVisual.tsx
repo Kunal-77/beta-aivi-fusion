@@ -1,16 +1,11 @@
-import { motion } from "motion/react";
 import heroShield from "@/assets/hero-shield.png";
 
 const orbits = ["Portfolio ROI", "Governance", "Value by design", "Continuous assurance"];
 
 export function HeroVisual() {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-      className="relative mx-auto aspect-square w-full max-w-[560px]"
-    >
+    <div className="relative mx-auto aspect-square w-full max-w-[560px] hero-entrance-dashboard">
+
       <div className="pulse-ring absolute inset-0 rounded-full border border-primary/30" />
       <div className="absolute inset-[8%] rounded-full border border-border" />
       <div className="spin-slow absolute inset-0">
