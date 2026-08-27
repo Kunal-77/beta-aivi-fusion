@@ -30,6 +30,7 @@ import { Route as SignUpSplatRouteImport } from './routes/sign-up.$'
 import { Route as SsoCallbackSplatRouteImport } from './routes/sso-callback.$'
 import { Route as BusinessInitiativesIndexRouteImport } from './routes/business.initiatives.index'
 import { Route as BusinessInitiativesIdRouteImport } from './routes/business.initiatives.$id'
+import { Route as ApiPublicAiviSplatRouteImport } from './routes/api/public/aivi.$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -137,6 +138,11 @@ const BusinessInitiativesIdRoute = BusinessInitiativesIdRouteImport.update({
   path: '/$id',
   getParentRoute: () => BusinessInitiativesRoute,
 } as any)
+const ApiPublicAiviSplatRoute = ApiPublicAiviSplatRouteImport.update({
+  id: '/api/public/aivi/$',
+  path: '/api/public/aivi/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -160,6 +166,7 @@ export interface FileRoutesByFullPath {
   '/personal/': typeof PersonalIndexRoute
   '/business/initiatives/$id': typeof BusinessInitiativesIdRoute
   '/business/initiatives/': typeof BusinessInitiativesIndexRoute
+  '/api/public/aivi/$': typeof ApiPublicAiviSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -180,6 +187,7 @@ export interface FileRoutesByTo {
   '/personal': typeof PersonalIndexRoute
   '/business/initiatives/$id': typeof BusinessInitiativesIdRoute
   '/business/initiatives': typeof BusinessInitiativesIndexRoute
+  '/api/public/aivi/$': typeof ApiPublicAiviSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -204,6 +212,7 @@ export interface FileRoutesById {
   '/personal/': typeof PersonalIndexRoute
   '/business/initiatives/$id': typeof BusinessInitiativesIdRoute
   '/business/initiatives/': typeof BusinessInitiativesIndexRoute
+  '/api/public/aivi/$': typeof ApiPublicAiviSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -229,6 +238,7 @@ export interface FileRouteTypes {
     | '/personal/'
     | '/business/initiatives/$id'
     | '/business/initiatives/'
+    | '/api/public/aivi/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -249,6 +259,7 @@ export interface FileRouteTypes {
     | '/personal'
     | '/business/initiatives/$id'
     | '/business/initiatives'
+    | '/api/public/aivi/$'
   id:
     | '__root__'
     | '/'
@@ -272,6 +283,7 @@ export interface FileRouteTypes {
     | '/personal/'
     | '/business/initiatives/$id'
     | '/business/initiatives/'
+    | '/api/public/aivi/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -283,6 +295,7 @@ export interface RootRouteChildren {
   SignInSplatRoute: typeof SignInSplatRoute
   SignUpSplatRoute: typeof SignUpSplatRoute
   SsoCallbackSplatRoute: typeof SsoCallbackSplatRoute
+  ApiPublicAiviSplatRoute: typeof ApiPublicAiviSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -434,6 +447,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BusinessInitiativesIdRouteImport
       parentRoute: typeof BusinessInitiativesRoute
     }
+    '/api/public/aivi/$': {
+      id: '/api/public/aivi/$'
+      path: '/api/public/aivi/$'
+      fullPath: '/api/public/aivi/$'
+      preLoaderRoute: typeof ApiPublicAiviSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -501,6 +521,7 @@ const rootRouteChildren: RootRouteChildren = {
   SignInSplatRoute: SignInSplatRoute,
   SignUpSplatRoute: SignUpSplatRoute,
   SsoCallbackSplatRoute: SsoCallbackSplatRoute,
+  ApiPublicAiviSplatRoute: ApiPublicAiviSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
