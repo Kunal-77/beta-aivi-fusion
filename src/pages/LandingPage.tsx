@@ -561,7 +561,9 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
+        </div>
       </section>
+
 
       {/* Business Problems Section */}
       <LazyViewport placeholder={<SectionPlaceholder height="350px" />} minHeight="350px">
