@@ -10,33 +10,315 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BusinessRouteImport } from './routes/business'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as PersonalRouteImport } from './routes/personal'
+import { Route as SignInRouteImport } from './routes/sign-in'
+import { Route as SignUpRouteImport } from './routes/sign-up'
+import { Route as SsoCallbackRouteImport } from './routes/sso-callback'
+import { Route as WorkspaceSelectRouteImport } from './routes/workspace-select'
+import { Route as BusinessIndexRouteImport } from './routes/business.index'
+import { Route as BusinessAdminRouteImport } from './routes/business.admin'
+import { Route as BusinessAiPlaygroundRouteImport } from './routes/business.ai-playground'
+import { Route as BusinessAiStudioRouteImport } from './routes/business.ai-studio'
+import { Route as BusinessApprovalsRouteImport } from './routes/business.approvals'
+import { Route as BusinessFinancialsRouteImport } from './routes/business.financials'
+import { Route as BusinessInitiativesRouteImport } from './routes/business.initiatives'
+import { Route as BusinessIntegrationsRouteImport } from './routes/business.integrations'
+import { Route as BusinessNotificationsRouteImport } from './routes/business.notifications'
+import { Route as BusinessPortfolioRouteImport } from './routes/business.portfolio'
+import { Route as PersonalIndexRouteImport } from './routes/personal.index'
+import { Route as SignInSplatRouteImport } from './routes/sign-in.$'
+import { Route as SignUpSplatRouteImport } from './routes/sign-up.$'
+import { Route as SsoCallbackSplatRouteImport } from './routes/sso-callback.$'
+import { Route as BusinessInitiativesIndexRouteImport } from './routes/business.initiatives.index'
+import { Route as BusinessInitiativesIdRouteImport } from './routes/business.initiatives.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BusinessRoute = BusinessRouteImport.update({
+  id: '/business',
+  path: '/business',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PersonalRoute = PersonalRouteImport.update({
+  id: '/personal',
+  path: '/personal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignInRoute = SignInRouteImport.update({
+  id: '/sign-in',
+  path: '/sign-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignUpRoute = SignUpRouteImport.update({
+  id: '/sign-up',
+  path: '/sign-up',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SsoCallbackRoute = SsoCallbackRouteImport.update({
+  id: '/sso-callback',
+  path: '/sso-callback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkspaceSelectRoute = WorkspaceSelectRouteImport.update({
+  id: '/workspace-select',
+  path: '/workspace-select',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessIndexRoute = BusinessIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BusinessRoute,
+} as any)
+const BusinessAdminRoute = BusinessAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => BusinessRoute,
+} as any)
+const BusinessAiPlaygroundRoute = BusinessAiPlaygroundRouteImport.update({
+  id: '/ai-playground',
+  path: '/ai-playground',
+  getParentRoute: () => BusinessRoute,
+} as any)
+const BusinessAiStudioRoute = BusinessAiStudioRouteImport.update({
+  id: '/ai-studio',
+  path: '/ai-studio',
+  getParentRoute: () => BusinessRoute,
+} as any)
+const BusinessApprovalsRoute = BusinessApprovalsRouteImport.update({
+  id: '/approvals',
+  path: '/approvals',
+  getParentRoute: () => BusinessRoute,
+} as any)
+const BusinessFinancialsRoute = BusinessFinancialsRouteImport.update({
+  id: '/financials',
+  path: '/financials',
+  getParentRoute: () => BusinessRoute,
+} as any)
+const BusinessInitiativesRoute = BusinessInitiativesRouteImport.update({
+  id: '/initiatives',
+  path: '/initiatives',
+  getParentRoute: () => BusinessRoute,
+} as any)
+const BusinessIntegrationsRoute = BusinessIntegrationsRouteImport.update({
+  id: '/integrations',
+  path: '/integrations',
+  getParentRoute: () => BusinessRoute,
+} as any)
+const BusinessNotificationsRoute = BusinessNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => BusinessRoute,
+} as any)
+const BusinessPortfolioRoute = BusinessPortfolioRouteImport.update({
+  id: '/portfolio',
+  path: '/portfolio',
+  getParentRoute: () => BusinessRoute,
+} as any)
+const PersonalIndexRoute = PersonalIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PersonalRoute,
+} as any)
+const SignInSplatRoute = SignInSplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => SignInRoute,
+} as any)
+const SignUpSplatRoute = SignUpSplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => SignUpRoute,
+} as any)
+const SsoCallbackSplatRoute = SsoCallbackSplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => SsoCallbackRoute,
+} as any)
+const BusinessInitiativesIndexRoute =
+  BusinessInitiativesIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => BusinessInitiativesRoute,
+  } as any)
+const BusinessInitiativesIdRoute = BusinessInitiativesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => BusinessInitiativesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/business': typeof BusinessRouteWithChildren
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/personal': typeof PersonalRouteWithChildren
+  '/sign-in': typeof SignInRouteWithChildren
+  '/sign-up': typeof SignUpRouteWithChildren
+  '/sso-callback': typeof SsoCallbackRouteWithChildren
+  '/workspace-select': typeof WorkspaceSelectRoute
+  '/business/admin': typeof BusinessAdminRoute
+  '/business/ai-playground': typeof BusinessAiPlaygroundRoute
+  '/business/ai-studio': typeof BusinessAiStudioRoute
+  '/business/approvals': typeof BusinessApprovalsRoute
+  '/business/financials': typeof BusinessFinancialsRoute
+  '/business/initiatives': typeof BusinessInitiativesRouteWithChildren
+  '/business/integrations': typeof BusinessIntegrationsRoute
+  '/business/notifications': typeof BusinessNotificationsRoute
+  '/business/portfolio': typeof BusinessPortfolioRoute
+  '/sign-in/$': typeof SignInSplatRoute
+  '/sign-up/$': typeof SignUpSplatRoute
+  '/sso-callback/$': typeof SsoCallbackSplatRoute
+  '/business/': typeof BusinessIndexRoute
+  '/personal/': typeof PersonalIndexRoute
+  '/business/initiatives/$id': typeof BusinessInitiativesIdRoute
+  '/business/initiatives/': typeof BusinessInitiativesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/sign-in': typeof SignInRouteWithChildren
+  '/sign-up': typeof SignUpRouteWithChildren
+  '/sso-callback': typeof SsoCallbackRouteWithChildren
+  '/workspace-select': typeof WorkspaceSelectRoute
+  '/business/admin': typeof BusinessAdminRoute
+  '/business/ai-playground': typeof BusinessAiPlaygroundRoute
+  '/business/ai-studio': typeof BusinessAiStudioRoute
+  '/business/approvals': typeof BusinessApprovalsRoute
+  '/business/financials': typeof BusinessFinancialsRoute
+  '/business/integrations': typeof BusinessIntegrationsRoute
+  '/business/notifications': typeof BusinessNotificationsRoute
+  '/business/portfolio': typeof BusinessPortfolioRoute
+  '/sign-in/$': typeof SignInSplatRoute
+  '/sign-up/$': typeof SignUpSplatRoute
+  '/sso-callback/$': typeof SsoCallbackSplatRoute
+  '/business': typeof BusinessIndexRoute
+  '/personal': typeof PersonalIndexRoute
+  '/business/initiatives/$id': typeof BusinessInitiativesIdRoute
+  '/business/initiatives': typeof BusinessInitiativesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/business': typeof BusinessRouteWithChildren
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/personal': typeof PersonalRouteWithChildren
+  '/sign-in': typeof SignInRouteWithChildren
+  '/sign-up': typeof SignUpRouteWithChildren
+  '/sso-callback': typeof SsoCallbackRouteWithChildren
+  '/workspace-select': typeof WorkspaceSelectRoute
+  '/business/admin': typeof BusinessAdminRoute
+  '/business/ai-playground': typeof BusinessAiPlaygroundRoute
+  '/business/ai-studio': typeof BusinessAiStudioRoute
+  '/business/approvals': typeof BusinessApprovalsRoute
+  '/business/financials': typeof BusinessFinancialsRoute
+  '/business/initiatives': typeof BusinessInitiativesRouteWithChildren
+  '/business/integrations': typeof BusinessIntegrationsRoute
+  '/business/notifications': typeof BusinessNotificationsRoute
+  '/business/portfolio': typeof BusinessPortfolioRoute
+  '/sign-in/$': typeof SignInSplatRoute
+  '/sign-up/$': typeof SignUpSplatRoute
+  '/sso-callback/$': typeof SsoCallbackSplatRoute
+  '/business/': typeof BusinessIndexRoute
+  '/personal/': typeof PersonalIndexRoute
+  '/business/initiatives/$id': typeof BusinessInitiativesIdRoute
+  '/business/initiatives/': typeof BusinessInitiativesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/business'
+    | '/forgot-password'
+    | '/personal'
+    | '/sign-in'
+    | '/sign-up'
+    | '/sso-callback'
+    | '/workspace-select'
+    | '/business/admin'
+    | '/business/ai-playground'
+    | '/business/ai-studio'
+    | '/business/approvals'
+    | '/business/financials'
+    | '/business/initiatives'
+    | '/business/integrations'
+    | '/business/notifications'
+    | '/business/portfolio'
+    | '/sign-in/$'
+    | '/sign-up/$'
+    | '/sso-callback/$'
+    | '/business/'
+    | '/personal/'
+    | '/business/initiatives/$id'
+    | '/business/initiatives/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/forgot-password'
+    | '/sign-in'
+    | '/sign-up'
+    | '/sso-callback'
+    | '/workspace-select'
+    | '/business/admin'
+    | '/business/ai-playground'
+    | '/business/ai-studio'
+    | '/business/approvals'
+    | '/business/financials'
+    | '/business/integrations'
+    | '/business/notifications'
+    | '/business/portfolio'
+    | '/sign-in/$'
+    | '/sign-up/$'
+    | '/sso-callback/$'
+    | '/business'
+    | '/personal'
+    | '/business/initiatives/$id'
+    | '/business/initiatives'
+  id:
+    | '__root__'
+    | '/'
+    | '/business'
+    | '/forgot-password'
+    | '/personal'
+    | '/sign-in'
+    | '/sign-up'
+    | '/sso-callback'
+    | '/workspace-select'
+    | '/business/admin'
+    | '/business/ai-playground'
+    | '/business/ai-studio'
+    | '/business/approvals'
+    | '/business/financials'
+    | '/business/initiatives'
+    | '/business/integrations'
+    | '/business/notifications'
+    | '/business/portfolio'
+    | '/sign-in/$'
+    | '/sign-up/$'
+    | '/sso-callback/$'
+    | '/business/'
+    | '/personal/'
+    | '/business/initiatives/$id'
+    | '/business/initiatives/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BusinessRoute: typeof BusinessRouteWithChildren
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
+  PersonalRoute: typeof PersonalRouteWithChildren
+  SignInRoute: typeof SignInRouteWithChildren
+  SignUpRoute: typeof SignUpRouteWithChildren
+  SsoCallbackRoute: typeof SsoCallbackRouteWithChildren
+  WorkspaceSelectRoute: typeof WorkspaceSelectRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +330,268 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/business': {
+      id: '/business'
+      path: '/business'
+      fullPath: '/business'
+      preLoaderRoute: typeof BusinessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/personal': {
+      id: '/personal'
+      path: '/personal'
+      fullPath: '/personal'
+      preLoaderRoute: typeof PersonalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sign-in': {
+      id: '/sign-in'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof SignInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sign-up': {
+      id: '/sign-up'
+      path: '/sign-up'
+      fullPath: '/sign-up'
+      preLoaderRoute: typeof SignUpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sso-callback': {
+      id: '/sso-callback'
+      path: '/sso-callback'
+      fullPath: '/sso-callback'
+      preLoaderRoute: typeof SsoCallbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/workspace-select': {
+      id: '/workspace-select'
+      path: '/workspace-select'
+      fullPath: '/workspace-select'
+      preLoaderRoute: typeof WorkspaceSelectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business/': {
+      id: '/business/'
+      path: '/'
+      fullPath: '/business/'
+      preLoaderRoute: typeof BusinessIndexRouteImport
+      parentRoute: typeof BusinessRoute
+    }
+    '/business/admin': {
+      id: '/business/admin'
+      path: '/admin'
+      fullPath: '/business/admin'
+      preLoaderRoute: typeof BusinessAdminRouteImport
+      parentRoute: typeof BusinessRoute
+    }
+    '/business/ai-playground': {
+      id: '/business/ai-playground'
+      path: '/ai-playground'
+      fullPath: '/business/ai-playground'
+      preLoaderRoute: typeof BusinessAiPlaygroundRouteImport
+      parentRoute: typeof BusinessRoute
+    }
+    '/business/ai-studio': {
+      id: '/business/ai-studio'
+      path: '/ai-studio'
+      fullPath: '/business/ai-studio'
+      preLoaderRoute: typeof BusinessAiStudioRouteImport
+      parentRoute: typeof BusinessRoute
+    }
+    '/business/approvals': {
+      id: '/business/approvals'
+      path: '/approvals'
+      fullPath: '/business/approvals'
+      preLoaderRoute: typeof BusinessApprovalsRouteImport
+      parentRoute: typeof BusinessRoute
+    }
+    '/business/financials': {
+      id: '/business/financials'
+      path: '/financials'
+      fullPath: '/business/financials'
+      preLoaderRoute: typeof BusinessFinancialsRouteImport
+      parentRoute: typeof BusinessRoute
+    }
+    '/business/initiatives': {
+      id: '/business/initiatives'
+      path: '/initiatives'
+      fullPath: '/business/initiatives'
+      preLoaderRoute: typeof BusinessInitiativesRouteImport
+      parentRoute: typeof BusinessRoute
+    }
+    '/business/integrations': {
+      id: '/business/integrations'
+      path: '/integrations'
+      fullPath: '/business/integrations'
+      preLoaderRoute: typeof BusinessIntegrationsRouteImport
+      parentRoute: typeof BusinessRoute
+    }
+    '/business/notifications': {
+      id: '/business/notifications'
+      path: '/notifications'
+      fullPath: '/business/notifications'
+      preLoaderRoute: typeof BusinessNotificationsRouteImport
+      parentRoute: typeof BusinessRoute
+    }
+    '/business/portfolio': {
+      id: '/business/portfolio'
+      path: '/portfolio'
+      fullPath: '/business/portfolio'
+      preLoaderRoute: typeof BusinessPortfolioRouteImport
+      parentRoute: typeof BusinessRoute
+    }
+    '/personal/': {
+      id: '/personal/'
+      path: '/'
+      fullPath: '/personal/'
+      preLoaderRoute: typeof PersonalIndexRouteImport
+      parentRoute: typeof PersonalRoute
+    }
+    '/sign-in/$': {
+      id: '/sign-in/$'
+      path: '/$'
+      fullPath: '/sign-in/$'
+      preLoaderRoute: typeof SignInSplatRouteImport
+      parentRoute: typeof SignInRoute
+    }
+    '/sign-up/$': {
+      id: '/sign-up/$'
+      path: '/$'
+      fullPath: '/sign-up/$'
+      preLoaderRoute: typeof SignUpSplatRouteImport
+      parentRoute: typeof SignUpRoute
+    }
+    '/sso-callback/$': {
+      id: '/sso-callback/$'
+      path: '/$'
+      fullPath: '/sso-callback/$'
+      preLoaderRoute: typeof SsoCallbackSplatRouteImport
+      parentRoute: typeof SsoCallbackRoute
+    }
+    '/business/initiatives/': {
+      id: '/business/initiatives/'
+      path: '/'
+      fullPath: '/business/initiatives/'
+      preLoaderRoute: typeof BusinessInitiativesIndexRouteImport
+      parentRoute: typeof BusinessInitiativesRoute
+    }
+    '/business/initiatives/$id': {
+      id: '/business/initiatives/$id'
+      path: '/$id'
+      fullPath: '/business/initiatives/$id'
+      preLoaderRoute: typeof BusinessInitiativesIdRouteImport
+      parentRoute: typeof BusinessInitiativesRoute
+    }
   }
 }
 
+interface BusinessInitiativesRouteChildren {
+  BusinessInitiativesIdRoute: typeof BusinessInitiativesIdRoute
+  BusinessInitiativesIndexRoute: typeof BusinessInitiativesIndexRoute
+}
+
+const BusinessInitiativesRouteChildren: BusinessInitiativesRouteChildren = {
+  BusinessInitiativesIdRoute: BusinessInitiativesIdRoute,
+  BusinessInitiativesIndexRoute: BusinessInitiativesIndexRoute,
+}
+
+const BusinessInitiativesRouteWithChildren =
+  BusinessInitiativesRoute._addFileChildren(BusinessInitiativesRouteChildren)
+
+interface BusinessRouteChildren {
+  BusinessAdminRoute: typeof BusinessAdminRoute
+  BusinessAiPlaygroundRoute: typeof BusinessAiPlaygroundRoute
+  BusinessAiStudioRoute: typeof BusinessAiStudioRoute
+  BusinessApprovalsRoute: typeof BusinessApprovalsRoute
+  BusinessFinancialsRoute: typeof BusinessFinancialsRoute
+  BusinessInitiativesRoute: typeof BusinessInitiativesRouteWithChildren
+  BusinessIntegrationsRoute: typeof BusinessIntegrationsRoute
+  BusinessNotificationsRoute: typeof BusinessNotificationsRoute
+  BusinessPortfolioRoute: typeof BusinessPortfolioRoute
+  BusinessIndexRoute: typeof BusinessIndexRoute
+}
+
+const BusinessRouteChildren: BusinessRouteChildren = {
+  BusinessAdminRoute: BusinessAdminRoute,
+  BusinessAiPlaygroundRoute: BusinessAiPlaygroundRoute,
+  BusinessAiStudioRoute: BusinessAiStudioRoute,
+  BusinessApprovalsRoute: BusinessApprovalsRoute,
+  BusinessFinancialsRoute: BusinessFinancialsRoute,
+  BusinessInitiativesRoute: BusinessInitiativesRouteWithChildren,
+  BusinessIntegrationsRoute: BusinessIntegrationsRoute,
+  BusinessNotificationsRoute: BusinessNotificationsRoute,
+  BusinessPortfolioRoute: BusinessPortfolioRoute,
+  BusinessIndexRoute: BusinessIndexRoute,
+}
+
+const BusinessRouteWithChildren = BusinessRoute._addFileChildren(
+  BusinessRouteChildren,
+)
+
+interface PersonalRouteChildren {
+  PersonalIndexRoute: typeof PersonalIndexRoute
+}
+
+const PersonalRouteChildren: PersonalRouteChildren = {
+  PersonalIndexRoute: PersonalIndexRoute,
+}
+
+const PersonalRouteWithChildren = PersonalRoute._addFileChildren(
+  PersonalRouteChildren,
+)
+
+interface SignInRouteChildren {
+  SignInSplatRoute: typeof SignInSplatRoute
+}
+
+const SignInRouteChildren: SignInRouteChildren = {
+  SignInSplatRoute: SignInSplatRoute,
+}
+
+const SignInRouteWithChildren =
+  SignInRoute._addFileChildren(SignInRouteChildren)
+
+interface SignUpRouteChildren {
+  SignUpSplatRoute: typeof SignUpSplatRoute
+}
+
+const SignUpRouteChildren: SignUpRouteChildren = {
+  SignUpSplatRoute: SignUpSplatRoute,
+}
+
+const SignUpRouteWithChildren =
+  SignUpRoute._addFileChildren(SignUpRouteChildren)
+
+interface SsoCallbackRouteChildren {
+  SsoCallbackSplatRoute: typeof SsoCallbackSplatRoute
+}
+
+const SsoCallbackRouteChildren: SsoCallbackRouteChildren = {
+  SsoCallbackSplatRoute: SsoCallbackSplatRoute,
+}
+
+const SsoCallbackRouteWithChildren = SsoCallbackRoute._addFileChildren(
+  SsoCallbackRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BusinessRoute: BusinessRouteWithChildren,
+  ForgotPasswordRoute: ForgotPasswordRoute,
+  PersonalRoute: PersonalRouteWithChildren,
+  SignInRoute: SignInRouteWithChildren,
+  SignUpRoute: SignUpRouteWithChildren,
+  SsoCallbackRoute: SsoCallbackRouteWithChildren,
+  WorkspaceSelectRoute: WorkspaceSelectRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
