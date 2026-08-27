@@ -122,9 +122,9 @@ const SignUpSplatRoute = SignUpSplatRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const SsoCallbackSplatRoute = SsoCallbackSplatRouteImport.update({
-  id: '/$',
-  path: '/$',
-  getParentRoute: () => SsoCallbackRoute,
+  id: '/sso-callback/$',
+  path: '/sso-callback/$',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const BusinessInitiativesIndexRoute =
   BusinessInitiativesIndexRouteImport.update({
@@ -282,6 +282,7 @@ export interface RootRouteChildren {
   WorkspaceSelectRoute: typeof WorkspaceSelectRoute
   SignInSplatRoute: typeof SignInSplatRoute
   SignUpSplatRoute: typeof SignUpSplatRoute
+  SsoCallbackSplatRoute: typeof SsoCallbackSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -414,10 +415,10 @@ declare module '@tanstack/react-router' {
     }
     '/sso-callback/$': {
       id: '/sso-callback/$'
-      path: '/$'
+      path: '/sso-callback/$'
       fullPath: '/sso-callback/$'
       preLoaderRoute: typeof SsoCallbackSplatRouteImport
-      parentRoute: typeof SsoCallbackRoute
+      parentRoute: typeof rootRouteImport
     }
     '/business/initiatives/': {
       id: '/business/initiatives/'
@@ -499,6 +500,7 @@ const rootRouteChildren: RootRouteChildren = {
   WorkspaceSelectRoute: WorkspaceSelectRoute,
   SignInSplatRoute: SignInSplatRoute,
   SignUpSplatRoute: SignUpSplatRoute,
+  SsoCallbackSplatRoute: SsoCallbackSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
