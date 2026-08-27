@@ -5,17 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * CyberCrest-inspired dark compliance design system.
+ * Mono uppercase eyebrows + geometric sans headings, teal/orange accents.
  */
 
 @theme inline {
@@ -46,90 +37,58 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ember: var(--ember);
+  --color-teal: var(--teal);
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --radius: 0.5rem;
+  --background: oklch(0.16 0.02 265);
+  --foreground: oklch(0.97 0.005 250);
+  --card: oklch(0.2 0.022 265);
+  --card-foreground: oklch(0.97 0.005 250);
+  --popover: oklch(0.2 0.022 265);
+  --popover-foreground: oklch(0.97 0.005 250);
+  --primary: oklch(0.78 0.13 190);
+  --primary-foreground: oklch(0.16 0.02 265);
+  --secondary: oklch(0.26 0.025 265);
+  --secondary-foreground: oklch(0.97 0.005 250);
+  --muted: oklch(0.24 0.02 265);
+  --muted-foreground: oklch(0.72 0.015 258);
+  --accent: oklch(0.7 0.17 45);
+  --accent-foreground: oklch(0.16 0.02 265);
+  --destructive: oklch(0.63 0.22 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.78 0.13 190 / 60%);
+  --surface: oklch(0.19 0.022 265);
+  --surface-2: oklch(0.23 0.025 265);
+  --teal: oklch(0.78 0.13 190);
+  --ember: oklch(0.72 0.17 48);
+
+  --gradient-hero: radial-gradient(
+      70% 90% at 72% 40%,
+      color-mix(in oklab, var(--teal) 16%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(60% 70% at 10% 10%, color-mix(in oklab, var(--ember) 8%, transparent), transparent 70%);
+  --gradient-line: linear-gradient(90deg, transparent, var(--teal), transparent);
+  --gradient-card: linear-gradient(
+    160deg,
+    color-mix(in oklab, var(--surface-2) 85%, transparent),
+    color-mix(in oklab, var(--surface) 95%, transparent)
+  );
+  --shadow-glow: 0 0 40px -10px color-mix(in oklab, var(--teal) 55%, transparent);
+  --shadow-card: 0 24px 60px -30px oklch(0 0 0 / 0.9);
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  color-scheme: dark;
 }
 
 @layer base {
@@ -140,5 +99,519 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-display);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--teal) 35%, transparent);
   }
 }
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  color: var(--teal);
+}
+
+@utility grid-bg {
+  background-image: linear-gradient(color-mix(in oklab, var(--teal) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--teal) 7%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(70% 60% at 50% 30%, black, transparent 85%);
+}
+
+@utility glass-card {
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(6px);
+}
+
+@utility btn-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+@utility hover-lift {
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+  &:hover {
+    transform: translateY(-6px);
+    border-color: color-mix(in oklab, var(--teal) 45%, transparent);
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+@utility marquee-track {
+  animation: marquee 32s linear infinite;
+}
+
+@utility float-slow {
+  animation: floaty 7s ease-in-out infinite;
+}
+
+@utility spin-slow {
+  animation: spin 26s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(-14px);
+  }
+  50% {
+    transform: translateY(14px);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    opacity: 0.25;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.25;
+    transform: scale(0.92);
+  }
+}
+
+@utility pulse-ring {
+  animation: pulse-ring 5s ease-in-out infinite;
+}
+
+/* ===== AIVI application utilities (ported, retinted to the Beta AIVI palette) ===== */
+/* Subtle enterprise glowing effects & elevated surfaces */
+.glow-blue-sm {
+  box-shadow: 0 0 15px -3px rgba(45, 212, 191, 0.15);
+}
+
+.glow-blue-md {
+  box-shadow: 0 0 25px -5px rgba(45, 212, 191, 0.25);
+}
+
+.border-glow-blue {
+  border-color: rgba(45, 212, 191, 0.35);
+  box-shadow: 0 0 12px -2px rgba(45, 212, 191, 0.2);
+}
+
+.glass-panel {
+  backdrop-filter: blur(12px);
+  background-color: color-mix(in oklab, var(--card) calc(0.85 * 100%), transparent);
+  border: 1px solid color-mix(in oklab, var(--border) calc(0.8 * 100%), transparent);
+}
+
+.bg-radial-navy {
+  background-image: radial-gradient(circle at top, rgba(20, 83, 96, 0.12) 0%, transparent 70%);
+}
+
+/* Ambient Dot Pattern & Subtle Grid */
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(45, 212, 191, 0.15) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.bg-grid-subtle {
+  background-image: 
+    linear-gradient(to right, rgba(45, 212, 191, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(45, 212, 191, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Single Signature Hero Gradient Mesh (Violet -> Indigo -> Electric Blue -> Navy) */
+.hero-gradient-mesh {
+  background: radial-gradient(ellipse 70% 60% at 45% 35%, rgba(45, 212, 191, 0.09) 0%, rgba(56, 189, 248, 0.07) 35%, rgba(45, 212, 191, 0.05) 65%, transparent 85%);
+  filter: blur(120px);
+}
+
+/* Keyframe Animations */
+@keyframes meshSlowShift {
+  0%, 100% {
+    transform: scale(1) translate(0px, 0px);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.06) translate(15px, -10px);
+    opacity: 0.95;
+  }
+}
+
+@keyframes productFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes beamSlide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.08);
+  }
+}
+
+/* Premium Dashboard Shadow & Soft Rim Glow */
+.dashboard-rim-glow {
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    0 16px 32px rgba(0, 0, 0, 0.5),
+    0 0 50px -10px rgba(45, 212, 191, 0.12),
+    0 0 80px -30px rgba(45, 212, 191, 0.12);
+}
+
+/* Dashboard Hover Parallax-like CSS Effect (pushed back up to prevent animation overwrite conflicts) */
+.dashboard-hover-state {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dashboard-hover-state:hover {
+  animation-play-state: paused !important;
+  transform: translateY(-8px) scale(1.005) !important;
+  border-color: rgba(45, 212, 191, 0.4) !important;
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 24px 48px -8px rgba(0, 0, 0, 0.6),
+    0 0 60px -5px rgba(45, 212, 191, 0.18),
+    0 0 90px -15px rgba(45, 212, 191, 0.18) !important;
+}
+
+/* Hero Entrance Animations */
+@keyframes heroFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-entrance-badge {
+  opacity: 0;
+  animation: heroFadeInUp 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 100ms;
+}
+.hero-entrance-title {
+  opacity: 0;
+  animation: heroFadeInUp 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 200ms;
+}
+.hero-entrance-desc {
+  opacity: 0;
+  animation: heroFadeInUp 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 350ms;
+}
+.hero-entrance-ctas {
+  opacity: 0;
+  animation: heroFadeInUp 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 500ms;
+}
+.hero-entrance-dashboard {
+  opacity: 0;
+  animation: heroFadeInUp 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 650ms;
+}
+
+/* Button micro-interactions */
+.cta-button-hover {
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), filter 200ms ease, box-shadow 200ms ease !important;
+}
+.cta-button-hover:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+.cta-button-hover:active {
+  transform: translateY(0) scale(0.98) !important;
+}
+
+.animate-hero-mesh {
+  animation: meshSlowShift 80s ease-in-out infinite;
+}
+
+.animate-product-float {
+  animation: productFloat 10s ease-in-out infinite;
+}
+
+.animate-beam-slide {
+  animation: beamSlide 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-mesh,
+  .animate-product-float,
+  .animate-beam-slide,
+  .animate-pulse-slow,
+  .hero-entrance-badge,
+  .hero-entrance-title,
+  .hero-entrance-desc,
+  .hero-entrance-ctas,
+  .hero-entrance-dashboard,
+  .dashboard-hover-state,
+  .cta-button-hover {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Suppress development overlay indicator badges */
+nextjs-portal,
+[data-nextjs-dev-tools],
+[data-nextjs-toast],
+#__next-build-watcher,
+div[data-nextjs-dialog-overlay] {
+  display: none !important;
+}
+
+/* ==================================================
+   REUSABLE LIVING UI MOTION UTILITIES (PHASE 2)
+   ================================================== */
+
+/* 1. Motion Reveal - Generic Fade + Slide Up */
+@keyframes motionRevealKeyframe {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.motion-reveal {
+  opacity: 0;
+  animation: motionRevealKeyframe 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Staggered utility delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* 2. Motion Float - Gentle floating animation */
+.motion-float {
+  animation: productFloat 12s ease-in-out infinite;
+}
+
+/* 3. Motion Glow - Breathing ambient drop shadow or background pulse */
+@keyframes motionGlowPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px -5px rgba(45, 212, 191, 0.15);
+    border-color: rgba(45, 212, 191, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px 0px rgba(45, 212, 191, 0.3);
+    border-color: rgba(45, 212, 191, 0.45);
+  }
+}
+.motion-glow {
+  animation: motionGlowPulse 4s ease-in-out infinite;
+}
+
+.motion-glow-cyan {
+  animation: motionGlowPulseCyan 4s ease-in-out infinite;
+}
+@keyframes motionGlowPulseCyan {
+  0%, 100% {
+    box-shadow: 0 0 15px -5px rgba(6, 182, 212, 0.15);
+    border-color: rgba(6, 182, 212, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px 0px rgba(6, 182, 212, 0.3);
+    border-color: rgba(6, 182, 212, 0.45);
+  }
+}
+
+/* 4. Motion Pulse Soft - Quiet opacity breathing */
+@keyframes motionPulseSoftKeyframe {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+.motion-pulse-soft {
+  animation: motionPulseSoftKeyframe 3s ease-in-out infinite;
+}
+
+/* 5. Motion Draw - SVG path/bar growth animation */
+@keyframes motionDrawKeyframe {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+.motion-draw {
+  animation: motionDrawKeyframe 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 6. Motion Number Reveal - Subtle font slide or scale */
+@keyframes motionNumberRevealKeyframe {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.motion-number-reveal {
+  opacity: 0;
+  animation: motionNumberRevealKeyframe 500ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* 7. Motion Hover Lift - lift by 1-2px and softly illuminate border */
+.motion-hover-lift {
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1), border-color 250ms ease, box-shadow 250ms ease;
+}
+.motion-hover-lift:hover {
+  transform: translateY(-2px);
+  border-color: rgba(45, 212, 191, 0.4) !important;
+  box-shadow: 0 10px 20px -10px rgba(45, 212, 191, 0.15);
+}
+
+/* 8. SVG Sparkline Draw Animation */
+@keyframes svgDraw {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* 9. Vertical Bar Chart Growth Animation */
+@keyframes drawVertical {
+  from {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+  to {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+}
+.motion-draw-vertical {
+  animation: drawVertical 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 10. Native Smooth Scroll on Anchors */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 11. Reusable Scroll Entrance Animation */
+.scroll-trigger {
+  opacity: 0;
+  transform: translateY(24px) scale(0.985);
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1), transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.scroll-trigger.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* 12. Route Page Entrance Transition */
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-page-entrance {
+  animation: pageFadeIn 350ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* 13. Hero Scroll-driven Animation (progressive enhancement) */
+@keyframes heroScrollAway {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.97);
+    opacity: 0.85;
+  }
+}
+@supports (animation-timeline: scroll()) {
+  .hero-scroll-wrapper {
+    animation: heroScrollAway linear both;
+    animation-timeline: scroll();
+    animation-range: exit 0% exit 80%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-reveal,
+  .motion-float,
+  .motion-glow,
+  .motion-glow-cyan,
+  .motion-pulse-soft,
+  .motion-draw,
+  .motion-draw-vertical,
+  .motion-number-reveal,
+  .motion-hover-lift,
+  .scroll-trigger,
+  .animate-page-entrance,
+  .hero-entrance-dashboard,
+  .hero-scroll-wrapper {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    box-shadow: none !important;
+  }
+}
+
