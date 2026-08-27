@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { ThemeToggle } from "../ui/ThemeToggle";
 
 interface ValueIntelligenceAuthShellProps {
   children: React.ReactNode;

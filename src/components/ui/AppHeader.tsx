@@ -8,7 +8,6 @@ import { cn } from "./cn";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { SearchBar } from "./SearchBar";
 import { NotificationButton } from "./NotificationButton";
-import { ThemeToggle } from "./ThemeToggle";
 import { UserMenu } from "./UserMenu";
 import { WorkspaceSelector } from "./WorkspaceSelector";
 
