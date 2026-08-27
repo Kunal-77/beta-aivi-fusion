@@ -415,7 +415,6 @@ export default function LandingPage() {
                 </Link>
               </>
             )}
-            <ThemeToggle />
           </div>
         </div>
       </header>

@@ -15,7 +15,6 @@ export function ValueIntelligenceAuthShell({ children }: ValueIntelligenceAuthSh
 
       {/* Header with Theme Toggle */}
       <header className="w-full max-w-7xl mx-auto px-6 py-4 flex items-center justify-end relative z-10">
-        <ThemeToggle />
       </header>
 
       {/* Main Authentication Card */}

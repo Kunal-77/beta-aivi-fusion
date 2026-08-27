@@ -109,7 +109,6 @@ function WorkspaceSelectContent() {
           <div className="hidden sm:block text-xs text-muted-foreground font-mono">
             Logged in as: <span className="text-foreground font-semibold">{user?.primaryEmailAddress?.emailAddress}</span>
           </div>
-          <ThemeToggle />
         </div>
       </header>
 

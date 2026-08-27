@@ -111,7 +111,6 @@ export const AppHeader = React.forwardRef<HTMLElement, AppHeaderProps>(
                   </div>
                 )}
                 <NotificationButton />
-                <ThemeToggle />
                 {showUserButton && <UserMenu />}
               </>
             )}
