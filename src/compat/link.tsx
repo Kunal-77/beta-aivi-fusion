@@ -1,4 +1,4 @@
-import { useNavigate } from "@tanstack/react-router";
+import { useNavigate, useRouter } from "@tanstack/react-router";
 import type { AnchorHTMLAttributes, MouseEvent, ReactNode } from "react";
 
 type LinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
@@ -23,6 +23,15 @@ export default function Link({
   ...rest
 }: LinkProps) {
   const navigate = useNavigate();
+  const router = useRouter();
+
+  const isExternal =
+    /^([a-z]+:)?\/\//i.test(href) || href.startsWith("mailto:") || href.startsWith("tel:") || href.startsWith("#");
+
+  function handlePreload() {
+    if (isExternal) return;
+    void router.preloadRoute({ href }).catch(() => {});
+  }
 
   function handleClick(event: MouseEvent<HTMLAnchorElement>) {
     onClick?.(event);
