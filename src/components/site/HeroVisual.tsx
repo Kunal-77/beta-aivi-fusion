@@ -36,7 +36,7 @@ export function HeroVisual() {
         height={1024}
         className="float-slow relative h-full w-full object-contain p-[18%] drop-shadow-[0_0_60px_rgba(45,212,191,0.25)]"
       />
-    </motion.div>
+    </div>
   );
 }
 
