@@ -13,9 +13,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as BusinessRouteImport } from './routes/business'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as PersonalRouteImport } from './routes/personal'
-import { Route as SignInRouteImport } from './routes/sign-in'
-import { Route as SignUpRouteImport } from './routes/sign-up'
-import { Route as SsoCallbackRouteImport } from './routes/sso-callback'
 import { Route as WorkspaceSelectRouteImport } from './routes/workspace-select'
 import { Route as BusinessIndexRouteImport } from './routes/business.index'
 import { Route as BusinessAdminRouteImport } from './routes/business.admin'
@@ -52,21 +49,6 @@ const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
 const PersonalRoute = PersonalRouteImport.update({
   id: '/personal',
   path: '/personal',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SignInRoute = SignInRouteImport.update({
-  id: '/sign-in',
-  path: '/sign-in',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SignUpRoute = SignUpRouteImport.update({
-  id: '/sign-up',
-  path: '/sign-up',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SsoCallbackRoute = SsoCallbackRouteImport.update({
-  id: '/sso-callback',
-  path: '/sso-callback',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WorkspaceSelectRoute = WorkspaceSelectRouteImport.update({
@@ -130,19 +112,19 @@ const PersonalIndexRoute = PersonalIndexRouteImport.update({
   getParentRoute: () => PersonalRoute,
 } as any)
 const SignInSplatRoute = SignInSplatRouteImport.update({
-  id: '/$',
-  path: '/$',
-  getParentRoute: () => SignInRoute,
+  id: '/sign-in/$',
+  path: '/sign-in/$',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const SignUpSplatRoute = SignUpSplatRouteImport.update({
-  id: '/$',
-  path: '/$',
-  getParentRoute: () => SignUpRoute,
+  id: '/sign-up/$',
+  path: '/sign-up/$',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const SsoCallbackSplatRoute = SsoCallbackSplatRouteImport.update({
-  id: '/$',
-  path: '/$',
-  getParentRoute: () => SsoCallbackRoute,
+  id: '/sso-callback/$',
+  path: '/sso-callback/$',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const BusinessInitiativesIndexRoute =
   BusinessInitiativesIndexRouteImport.update({
@@ -161,9 +143,6 @@ export interface FileRoutesByFullPath {
   '/business': typeof BusinessRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
   '/personal': typeof PersonalRouteWithChildren
-  '/sign-in': typeof SignInRouteWithChildren
-  '/sign-up': typeof SignUpRouteWithChildren
-  '/sso-callback': typeof SsoCallbackRouteWithChildren
   '/workspace-select': typeof WorkspaceSelectRoute
   '/business/admin': typeof BusinessAdminRoute
   '/business/ai-playground': typeof BusinessAiPlaygroundRoute
@@ -185,9 +164,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/forgot-password': typeof ForgotPasswordRoute
-  '/sign-in': typeof SignInRouteWithChildren
-  '/sign-up': typeof SignUpRouteWithChildren
-  '/sso-callback': typeof SsoCallbackRouteWithChildren
   '/workspace-select': typeof WorkspaceSelectRoute
   '/business/admin': typeof BusinessAdminRoute
   '/business/ai-playground': typeof BusinessAiPlaygroundRoute
@@ -211,9 +187,6 @@ export interface FileRoutesById {
   '/business': typeof BusinessRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
   '/personal': typeof PersonalRouteWithChildren
-  '/sign-in': typeof SignInRouteWithChildren
-  '/sign-up': typeof SignUpRouteWithChildren
-  '/sso-callback': typeof SsoCallbackRouteWithChildren
   '/workspace-select': typeof WorkspaceSelectRoute
   '/business/admin': typeof BusinessAdminRoute
   '/business/ai-playground': typeof BusinessAiPlaygroundRoute
@@ -239,9 +212,6 @@ export interface FileRouteTypes {
     | '/business'
     | '/forgot-password'
     | '/personal'
-    | '/sign-in'
-    | '/sign-up'
-    | '/sso-callback'
     | '/workspace-select'
     | '/business/admin'
     | '/business/ai-playground'
@@ -263,9 +233,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/forgot-password'
-    | '/sign-in'
-    | '/sign-up'
-    | '/sso-callback'
     | '/workspace-select'
     | '/business/admin'
     | '/business/ai-playground'
@@ -288,9 +255,6 @@ export interface FileRouteTypes {
     | '/business'
     | '/forgot-password'
     | '/personal'
-    | '/sign-in'
-    | '/sign-up'
-    | '/sso-callback'
     | '/workspace-select'
     | '/business/admin'
     | '/business/ai-playground'
@@ -315,10 +279,10 @@ export interface RootRouteChildren {
   BusinessRoute: typeof BusinessRouteWithChildren
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   PersonalRoute: typeof PersonalRouteWithChildren
-  SignInRoute: typeof SignInRouteWithChildren
-  SignUpRoute: typeof SignUpRouteWithChildren
-  SsoCallbackRoute: typeof SsoCallbackRouteWithChildren
   WorkspaceSelectRoute: typeof WorkspaceSelectRoute
+  SignInSplatRoute: typeof SignInSplatRoute
+  SignUpSplatRoute: typeof SignUpSplatRoute
+  SsoCallbackSplatRoute: typeof SsoCallbackSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -349,27 +313,6 @@ declare module '@tanstack/react-router' {
       path: '/personal'
       fullPath: '/personal'
       preLoaderRoute: typeof PersonalRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sign-in': {
-      id: '/sign-in'
-      path: '/sign-in'
-      fullPath: '/sign-in'
-      preLoaderRoute: typeof SignInRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sign-up': {
-      id: '/sign-up'
-      path: '/sign-up'
-      fullPath: '/sign-up'
-      preLoaderRoute: typeof SignUpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sso-callback': {
-      id: '/sso-callback'
-      path: '/sso-callback'
-      fullPath: '/sso-callback'
-      preLoaderRoute: typeof SsoCallbackRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/workspace-select': {
@@ -458,24 +401,24 @@ declare module '@tanstack/react-router' {
     }
     '/sign-in/$': {
       id: '/sign-in/$'
-      path: '/$'
+      path: '/sign-in/$'
       fullPath: '/sign-in/$'
       preLoaderRoute: typeof SignInSplatRouteImport
-      parentRoute: typeof SignInRoute
+      parentRoute: typeof rootRouteImport
     }
     '/sign-up/$': {
       id: '/sign-up/$'
-      path: '/$'
+      path: '/sign-up/$'
       fullPath: '/sign-up/$'
       preLoaderRoute: typeof SignUpSplatRouteImport
-      parentRoute: typeof SignUpRoute
+      parentRoute: typeof rootRouteImport
     }
     '/sso-callback/$': {
       id: '/sso-callback/$'
-      path: '/$'
+      path: '/sso-callback/$'
       fullPath: '/sso-callback/$'
       preLoaderRoute: typeof SsoCallbackSplatRouteImport
-      parentRoute: typeof SsoCallbackRoute
+      parentRoute: typeof rootRouteImport
     }
     '/business/initiatives/': {
       id: '/business/initiatives/'
@@ -549,49 +492,15 @@ const PersonalRouteWithChildren = PersonalRoute._addFileChildren(
   PersonalRouteChildren,
 )
 
-interface SignInRouteChildren {
-  SignInSplatRoute: typeof SignInSplatRoute
-}
-
-const SignInRouteChildren: SignInRouteChildren = {
-  SignInSplatRoute: SignInSplatRoute,
-}
-
-const SignInRouteWithChildren =
-  SignInRoute._addFileChildren(SignInRouteChildren)
-
-interface SignUpRouteChildren {
-  SignUpSplatRoute: typeof SignUpSplatRoute
-}
-
-const SignUpRouteChildren: SignUpRouteChildren = {
-  SignUpSplatRoute: SignUpSplatRoute,
-}
-
-const SignUpRouteWithChildren =
-  SignUpRoute._addFileChildren(SignUpRouteChildren)
-
-interface SsoCallbackRouteChildren {
-  SsoCallbackSplatRoute: typeof SsoCallbackSplatRoute
-}
-
-const SsoCallbackRouteChildren: SsoCallbackRouteChildren = {
-  SsoCallbackSplatRoute: SsoCallbackSplatRoute,
-}
-
-const SsoCallbackRouteWithChildren = SsoCallbackRoute._addFileChildren(
-  SsoCallbackRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BusinessRoute: BusinessRouteWithChildren,
   ForgotPasswordRoute: ForgotPasswordRoute,
   PersonalRoute: PersonalRouteWithChildren,
-  SignInRoute: SignInRouteWithChildren,
-  SignUpRoute: SignUpRouteWithChildren,
-  SsoCallbackRoute: SsoCallbackRouteWithChildren,
   WorkspaceSelectRoute: WorkspaceSelectRoute,
+  SignInSplatRoute: SignInSplatRoute,
+  SignUpSplatRoute: SignUpSplatRoute,
+  SsoCallbackSplatRoute: SsoCallbackSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
