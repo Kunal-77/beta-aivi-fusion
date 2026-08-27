@@ -31,7 +31,7 @@ export default function Link({
     if (rest.target && rest.target !== "_self") return;
     if (/^([a-z]+:)?\/\//i.test(href) || href.startsWith("mailto:") || href.startsWith("tel:")) return;
     event.preventDefault();
-    navigate({ to: href, replace });
+    void navigate({ href, replace });
   }
 
   return (
