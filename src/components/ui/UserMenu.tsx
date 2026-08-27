@@ -2,9 +2,8 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { useAuth, useUser, useClerk, useOrganizationList } from "@clerk/react";
-import { useTheme } from "next-themes";
 import { useRouter } from "@/compat/navigation";
-import { User, Briefcase, Settings, LogOut, Moon, Sun, ShieldCheck, Laptop, Layers } from "lucide-react";
+import { User, Briefcase, Settings, LogOut, ShieldCheck, Layers } from "lucide-react";
 import { useWorkspaceTransition } from "./WorkspaceTransitionContext";
 import { cn } from "./cn";
 
@@ -20,7 +19,6 @@ export function UserMenu({ className, ...props }: UserMenuProps) {
   const { startTransition, endTransition } = useWorkspaceTransition();
 
   const router = useRouter();
-  const { theme, setTheme, resolvedTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
