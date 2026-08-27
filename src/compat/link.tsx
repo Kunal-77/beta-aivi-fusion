@@ -30,7 +30,7 @@ export default function Link({
 
   function handlePreload() {
     if (isExternal) return;
-    void router.preloadRoute({ href }).catch(() => {});
+    void Promise.resolve(router.preloadRoute({ to: href } as never)).catch(() => {});
   }
 
   function handleClick(event: MouseEvent<HTMLAnchorElement>) {
@@ -44,7 +44,14 @@ export default function Link({
   }
 
   return (
-    <a href={href} onClick={handleClick} {...rest}>
+    <a
+      href={href}
+      onClick={handleClick}
+      onMouseEnter={handlePreload}
+      onFocus={handlePreload}
+      onTouchStart={handlePreload}
+      {...rest}
+    >
       {children}
     </a>
   );
